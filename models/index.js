@@ -9,5 +9,5 @@ const Categories = sequelize.define('categories', {
 })
 
 module.exports = {
-    Categories
+    Categories,
 }
