@@ -11,8 +11,8 @@ app.use(cors())
 app.use('/', router)
 
 async function start() {
-    await sequelize.sync({force: true}).then(() => console.log('DB is running')).catch((e) => console.log(e))
-    app.listen(3000, () => {
+    await sequelize.sync().then(() => console.log('DB is running')).catch((e) => console.log(e))
+    app.listen(3001, () => {
         console.log('Server is running')
     })
 }
