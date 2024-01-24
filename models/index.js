@@ -13,6 +13,12 @@ const Phones = sequelize.define('phones', {
     phone: {type: DataTypes.STRING}
 })
 
+const Socials = sequelize.define('socials', {
+    id: {type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true},
+    urlImage: {type: DataTypes.STRING},
+    urlSocial: {type: DataTypes.STRING}
+})
+
 const Advantages = sequelize.define('advantages', {
     id: {type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true},
     title: {type: DataTypes.STRING, unique: true},
@@ -39,5 +45,7 @@ module.exports = {
     Categories,
     Advantages,
     Users,
-    Tokens
+    Tokens,
+    Phones,
+    Socials
 }

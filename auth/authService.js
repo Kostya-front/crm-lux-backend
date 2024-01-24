@@ -3,6 +3,7 @@ const userService = require('../users/userService')
 const jwt = require('jsonwebtoken')
 const tokensService = require('../tokens/tokenService')
 
+
 class AuthService {
     constructor(userService, jwt, tokenService) {
         this.userService = userService
@@ -18,6 +19,7 @@ class AuthService {
             nickname: createdUser.nickname
         }
         const tokens = this.tokenService.generateTokens({...userDto})
+        await this.tokenService.saveToken({userId: userDto.id, token: tokens.refreshToken})
         return {
             ...tokens,
             user: userDto

@@ -22,7 +22,7 @@ class AuthController {
 
         const tokens = await this.authService.register({email, nickname, password: hashPassword})
 
-        res.cookie('refreshToken', tokens.refreshToken)
+        res.cookie('refreshToken', tokens.refreshToken, )
         return res.status(200).json(tokens)
     }
 

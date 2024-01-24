@@ -13,6 +13,8 @@ module.exports = function (req, res, next) {
 
         req.user = userDate
         next()
+
+        // 'fg9gik9ikg95igk9ifgk9k94k954kg95k9ihk6' => {email, id, role,}
     }
     catch (e) {
         console.log(e.message)
