@@ -38,7 +38,7 @@ class AuthController {
 
         if(candidate && isCompare) {
             const token = await this.authService.login(candidate)
-            res.cookie('refreshToken', token.refreshToken).status(200).json(token)
+            res.cookie('refreshToken', token.refreshToken, {httpOnly: true}).status(200).json(token)
         }
     }
 
@@ -47,11 +47,11 @@ class AuthController {
             const {refreshToken} = req.cookies
 
             if(!refreshToken) {
-                return res.status(401).json({message: 'Пользователь не авторизован'})
+                return res.status(403).json({message: 'Пользователь не авторизован'})
             }
             const data = await this.authService.refreshToken(refreshToken)
 
-            res.cookie('refreshToken', data.refreshToken)
+            res.cookie('refreshToken', data.refreshToken, {httpOnly: true})
             res.status(200).json(data)
         }
         catch (e){
